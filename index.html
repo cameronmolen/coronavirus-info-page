@@ -1,12 +1,55 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
+  <meta charset="utf-8" />
+  <title>COVID-19 Information</title>
+  <link rel="stylesheet" href="/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body onload="populateData()">
+
+  <div class="header">
+    <div class="header-content">
+      <h1>COVID-19 World Information</h1>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <div class="key-info">
+      <div class="key-item">
+        <h1>Total Confirmed</h1>
+        <h2 id="total-confirmed"></h2>
+      </div>
+      <div class="key-item">
+        <h1>Total Deaths</h1>
+        <h2 id="total-deaths"></h2>
+      </div>
+      <div class="key-item">
+        <h1>Total Recovered</h1>
+        <h2 id="total-recovered"></h2>
+      </div>
+    </div>
+
+    <form style="padding: 20px 0px;">
+      <label>Enter a country</label>
+      <input id="countryInput" type="text"></input>
+      <input id="countrySubmit" type="submit" value="Search"></input>
+    </form>
+    <div id="countryResults">
+      Select a country to see the current COVID-19 stats on it.
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Designed by Cameron Molen for CS 260 at Brigham Young University.</p>
+    <a href="https://github.com/cameronmolen/coronavirus-info-page">GitHub</a>
+  </div>
+
+  <script text="type/javascript" src="/script.js">
+  </script>
 
 </body>
 
