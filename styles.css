@@ -30,6 +30,8 @@ a:hover {
 .header-content {
   padding: 10px 20px;
   color: white;
+  font-size: 0.8em;
+  margin: auto;
 }
 
 .page {
@@ -68,5 +70,10 @@ a:hover {
   .key-info {
     flex-direction: row;
     justify-content: space-around;
+  }
+
+  .header-content {
+    font-size: 1.2em;
+    margin: inherit;
   }
 }
