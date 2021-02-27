@@ -9,13 +9,13 @@ function populateData() {
   })
 };
 
-document.getElementById("countrySubmit").addEventListener("click", fuction(event) {
+document.getElementById("countrySubmit")
+  .addEventListener("click", function(event) {
   event.preventDefault();
   const value = document.getElementById("countryInput").value;
   let slug = "";
   if(value === "")
     return;
-  console.log(value);
   fetch("https://api.covid19api.com/countries")
     .then(function(response) {
       return response.json();
@@ -26,7 +26,7 @@ document.getElementById("countrySubmit").addEventListener("click", fuction(event
           break;
         }
       }
-      console.log(slug);
+      document.getElementById("countryResults").innerHTML = slug;
     });
   //const url = "";
 });
