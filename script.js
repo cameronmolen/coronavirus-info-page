@@ -12,10 +12,11 @@ function populateData() {
 document.getElementById("countrySubmit")
   .addEventListener("click", function(event) {
   event.preventDefault();
-  const value = document.getElementById("countryInput").value;
+  let value = document.getElementById("countryInput").value;
   let slug = "";
+  let countryName = "";
   if(value === "")
-    return;
+    value = "united states of america";
   fetch("https://api.covid19api.com/countries")
     .then(function(response) {
       return response.json();
@@ -23,12 +24,32 @@ document.getElementById("countrySubmit")
       for(const country of json) {
         if(country.Country.toLowerCase() === value.toLowerCase()) {
           slug = country.Slug;
+          countryName = country.Country;
           break;
         }
       }
-      document.getElementById("countryResults").innerHTML = slug;
+      if(slug === "") {
+        document.getElementById("countryResults").innerHTML = "Could not find country specified." +
+          " You may want to try to check your spelling or make sure you entered a real country :-)";
+        return;
+      }
+      fetch("https://api.covid19api.com/summary")
+        .then(function(response) {
+          return response.json();
+      }).then(function(json) {
+        let content = "";
+        for(const country of json.Countries) {
+          if(country.Country === countryName) {
+            content += "<h1>" + countryName + "</h1>";
+            content += "<p>New Confirmed Cases: " + country.NewConfirmed.toLocaleString() + "</p>";
+            content += "<p>Total Confirmed Cases: " + country.TotalConfirmed.toLocaleString() + "</p>";
+            content += "<p>New Deaths: " + country.NewDeaths.toLocaleString() + "</p>";
+            content += "<p>Total Deaths: " + country.TotalDeaths.toLocaleString() + "</p>";
+          }
+        }
+        document.getElementById("countryResults").innerHTML = content;
+      })
     });
-  //const url = "";
 });
 
 /* // Using this code as a template.
