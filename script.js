@@ -41,6 +41,7 @@ document.getElementById("countrySubmit")
         for(const country of json.Countries) {
           if(country.Country === countryName) {
             content += "<h1>" + countryName + "</h1>";
+            content += "<p>Updated on: " + new Date(country.Date).toLocaleString() + "</p>";
             content += "<p>New Confirmed Cases: " + country.NewConfirmed.toLocaleString() + "</p>";
             content += "<p>Total Confirmed Cases: " + country.TotalConfirmed.toLocaleString() + "</p>";
             content += "<p>New Deaths: " + country.NewDeaths.toLocaleString() + "</p>";
